@@ -1,13 +1,16 @@
 import { type NextPage } from "next";
 import Head from "next/head";
+
 import { Navbar } from "../components/Navbar";
+import { Main } from "../components/Main"
+import { api } from "../utils/api";
+
 import { useSession } from "next-auth/react";
 
-import { api } from "../utils/api";
-import { Text, Box, Center } from "@chakra-ui/react";
+import { Box, Center, Text } from "@chakra-ui/react";
 
 const Home: NextPage = () => {
-  const { data: session } = useSession()
+  const { data: session } = useSession();
 
   return (
     <>
@@ -18,23 +21,19 @@ const Home: NextPage = () => {
       </Head>
       <main>
         <Navbar />
-        
-        <Center>
-        {session ? (
-          <Box pt="5">
-            <Text>Logged in as: {session!.user.name} - {session!.user.email}</Text>
-          </Box>
-        ) : (
-          <Box pt="5">
-            <Text>not authenticated. please sign in to continue.</Text>
-          </Box>
-        )}
-        </Center>
 
+        <Center>
+          {session ? (
+            <Main />
+          ) : (
+            <Box pt="5">
+              <Text>not authenticated. please sign in to continue.</Text>
+            </Box>
+          )}
+        </Center>
       </main>
     </>
-  )
-}
+  );
+};
 
 export default Home;
-
