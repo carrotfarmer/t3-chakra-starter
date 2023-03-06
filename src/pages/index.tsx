@@ -1,13 +1,13 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import { Navbar } from "../components/Navbar";
-// import Link from "next/link";
-// import { signIn, signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 import { api } from "../utils/api";
+import { Text, Box, Center } from "@chakra-ui/react";
 
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
+  const { data: session } = useSession()
 
   return (
     <>
@@ -18,6 +18,19 @@ const Home: NextPage = () => {
       </Head>
       <main>
         <Navbar />
+        
+        <Center>
+        {session ? (
+          <Box pt="5">
+            <Text>Logged in as: {session!.user.name} - {session!.user.email}</Text>
+          </Box>
+        ) : (
+          <Box pt="5">
+            <Text>not authenticated. please sign in to continue.</Text>
+          </Box>
+        )}
+        </Center>
+
       </main>
     </>
   )
