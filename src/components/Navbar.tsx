@@ -1,17 +1,14 @@
 import React from "react";
 
-import {
-  Box,
-  Flex,
-  Stack,
-  Button,
-  useColorModeValue,
-  Heading,
-} from "@chakra-ui/react";
+import { Box, Flex, Stack, Button, useColorModeValue, Heading } from "@chakra-ui/react";
+
+import { signOut, signIn, useSession } from "next-auth/react";
 
 interface NavbarProps {}
 
 export const Navbar: React.FC<NavbarProps> = ({}) => {
+  const { data: session } = useSession();
+
   return (
     <Box>
       <Flex
@@ -31,20 +28,39 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
           </Heading>
         </Flex>
         <Stack flex={{ base: 1, md: 0 }} justify={"flex-end"} direction={"row"} spacing={6}>
-          <Button
-            as={"a"}
-            display={{ base: "none", md: "inline-flex" }}
-            fontSize={"sm"}
-            fontWeight={600}
-            color={"white"}
-            bg={"pink.400"}
-            href={"#"}
-            _hover={{
-              bg: "pink.300",
-            }}
-          >
-            sign in 
-          </Button>
+          {session ? (
+            <Button
+              as={"a"}
+              display={{ base: "none", md: "inline-flex" }}
+              fontSize={"sm"}
+              fontWeight={600}
+              color={"white"}
+              bg={"pink.400"}
+              href={"#"}
+              _hover={{
+                bg: "pink.300",
+              }}
+              onClick={() => signOut()}
+            >
+              sign out
+            </Button>
+          ) : (
+            <Button
+              as={"a"}
+              display={{ base: "none", md: "inline-flex" }}
+              fontSize={"sm"}
+              fontWeight={600}
+              color={"white"}
+              bg={"pink.400"}
+              href={"#"}
+              _hover={{
+                bg: "pink.300",
+              }}
+              onClick={() => signIn()}
+            >
+              sign in
+            </Button>
+          )}
         </Stack>
       </Flex>
     </Box>
