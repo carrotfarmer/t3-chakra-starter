@@ -11,9 +11,7 @@ export const Navbar: React.FC = ({}) => {
   return (
     <Box>
       <Flex
-        // @eslint-ignore
         bg={useColorModeValue("white", "gray.800")}
-        // @eslint-ignore
         color={useColorModeValue("gray.600", "white")}
         minH={"60px"}
         py={{ base: 2 }}
