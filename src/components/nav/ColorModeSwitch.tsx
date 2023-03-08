@@ -1,0 +1,28 @@
+import React from "react";
+import { IconButton, useColorMode } from "@chakra-ui/react";
+import { BsMoonFill, BsSunFill } from "react-icons/bs";
+
+interface ColorModeSwitchProps {}
+
+export const ColorModeSwitch: React.FC<ColorModeSwitchProps> = ({}) => {
+  const { colorMode, toggleColorMode } = useColorMode();
+  return (
+    <>
+      {colorMode === "light" ? (
+        <IconButton
+          onClick={toggleColorMode}
+          colorScheme="pink"
+          aria-label="color mode switch"
+          icon={<BsMoonFill />}
+        />
+      ) : (
+        <IconButton
+          onClick={toggleColorMode}
+          colorScheme="pink"
+          aria-label="color mode switch"
+          icon={<BsSunFill />}
+        />
+      )}
+    </>
+  );
+};

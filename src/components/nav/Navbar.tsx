@@ -1,15 +1,16 @@
 import React from "react";
 
-import { 
+import {
   Box,
   Flex,
   Stack,
   Button,
+  Heading,
   useColorModeValue,
-  Heading 
 } from "@chakra-ui/react";
 
 import { signOut, signIn, useSession } from "next-auth/react";
+import { ColorModeSwitch } from "./ColorModeSwitch";
 
 interface NavbarProps {}
 
@@ -35,6 +36,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
           </Heading>
         </Flex>
         <Stack flex={{ base: 1, md: 0 }} justify={"flex-end"} direction={"row"} spacing={6}>
+          <ColorModeSwitch />
           {session ? (
             <Button
               as={"a"}

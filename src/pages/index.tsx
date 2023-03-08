@@ -1,9 +1,8 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 
-import { Navbar } from "../components/Navbar";
-import { Main } from "../components/Main"
-import { api } from "../utils/api";
+import { Navbar } from "../components/nav/Navbar";
+import { Main } from "../components/Main";
 
 import { useSession } from "next-auth/react";
 
