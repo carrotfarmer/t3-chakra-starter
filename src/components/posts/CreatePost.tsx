@@ -74,7 +74,6 @@ export const CreatePost: React.FC<CreatePostProps> = ({ setPosts }) => {
       <form
         onSubmit={handleSubmit((data) => {
           createPost({ name: data.name });
-          console.log(data);
           reset();
         })}
       >
