@@ -7,6 +7,7 @@ import * as z from "zod";
 import { FormErrorMessage, FormLabel, FormControl, Input, Button, Box } from "@chakra-ui/react";
 
 import { createPostConstants } from "../../lib/constants";
+import { api } from "../../utils/api";
 
 interface CreatePostProps {}
 
@@ -30,9 +31,16 @@ export const CreatePost: React.FC<CreatePostProps> = ({}) => {
     resolver: zodResolver(createPostSchema),
   });
 
+  const { mutate: createPost } = api.post.createPost.useMutation({});
+
   return (
     <Box>
-      <form onSubmit={handleSubmit((data) => console.log(data))}>
+      <form
+        onSubmit={handleSubmit((data) => {
+          createPost({ name: data.name });
+          console.log(data);
+        })}
+      >
         <FormControl isInvalid={Boolean(errors.name)}>
           <FormLabel htmlFor="name">post name</FormLabel>
           <Input id="name" placeholder="my first post" {...register("name")} />
