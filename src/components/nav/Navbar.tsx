@@ -12,9 +12,7 @@ import {
 import { signOut, signIn, useSession } from "next-auth/react";
 import { ColorModeSwitch } from "./ColorModeSwitch";
 
-interface NavbarProps {}
-
-export const Navbar: React.FC<NavbarProps> = ({}) => {
+export const Navbar: React.FC = ({}) => {
   const { data: session } = useSession();
 
   return (

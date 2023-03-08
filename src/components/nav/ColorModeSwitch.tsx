@@ -2,9 +2,7 @@ import React from "react";
 import { IconButton, useColorMode } from "@chakra-ui/react";
 import { BsMoonFill, BsSunFill } from "react-icons/bs";
 
-interface ColorModeSwitchProps {}
-
-export const ColorModeSwitch: React.FC<ColorModeSwitchProps> = ({}) => {
+export const ColorModeSwitch: React.FC = ({}) => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <>
