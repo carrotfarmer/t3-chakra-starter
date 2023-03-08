@@ -4,14 +4,27 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
-import { FormErrorMessage, FormLabel, FormControl, Input, Button, Box } from "@chakra-ui/react";
+import {
+  FormErrorMessage,
+  FormLabel,
+  FormControl,
+  Input,
+  Button,
+  Box,
+  useToast,
+} from "@chakra-ui/react";
 
 import { createPostConstants } from "../../lib/constants";
 import { api } from "../../utils/api";
 
-interface CreatePostProps {}
+import { Post as IPost } from "@prisma/client";
 
-export const CreatePost: React.FC<CreatePostProps> = ({}) => {
+interface CreatePostProps {
+  posts: IPost[];
+  setPosts: React.Dispatch<React.SetStateAction<IPost[]>>;
+}
+
+export const CreatePost: React.FC<CreatePostProps> = ({ posts, setPosts }) => {
   const { MIN_LENGTH, MAX_LENGTH } = createPostConstants;
 
   const createPostSchema = z.object({
@@ -31,7 +44,30 @@ export const CreatePost: React.FC<CreatePostProps> = ({}) => {
     resolver: zodResolver(createPostSchema),
   });
 
-  const { mutate: createPost } = api.post.createPost.useMutation({});
+  const toast = useToast();
+
+  const { mutate: createPost } = api.post.createPost.useMutation({
+    onSuccess: (data) => {
+      setPosts((prev) => [data, ...prev]);
+
+      toast({
+        status: "success",
+        title: "created post",
+        isClosable: true,
+        duration: 5000,
+      });
+    },
+
+    onError: async (err) => {
+      toast({
+        status: "error",
+        title: "an error occurred",
+        description: `something went wrong! please try again!`,
+        isClosable: true,
+        duration: 5000,
+      });
+    },
+  });
 
   return (
     <Box>
