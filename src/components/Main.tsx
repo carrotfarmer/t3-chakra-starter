@@ -34,13 +34,13 @@ export const Main: React.FC<MainProps> = ({}) => {
         Logged in as: {session!.user.name} - {session!.user.email}
       </Text>
       <Box pt="5">
-        <CreatePost posts={posts} setPosts={setPosts} />
+        <CreatePost setPosts={setPosts} />
       </Box>
       <Box pt="5">
         <Box>
           {posts.map((post) => (
             <Box pt="5">
-              <Post post={post} setPosts={setPosts} />
+              <Post post={post} posts={posts} setPosts={setPosts} />
             </Box>
           ))}
         </Box>

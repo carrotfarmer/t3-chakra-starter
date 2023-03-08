@@ -20,11 +20,10 @@ import { api } from "../../utils/api";
 import { Post as IPost } from "@prisma/client";
 
 interface CreatePostProps {
-  posts: IPost[];
   setPosts: React.Dispatch<React.SetStateAction<IPost[]>>;
 }
 
-export const CreatePost: React.FC<CreatePostProps> = ({ posts, setPosts }) => {
+export const CreatePost: React.FC<CreatePostProps> = ({ setPosts }) => {
   const { MIN_LENGTH, MAX_LENGTH } = createPostConstants;
 
   const createPostSchema = z.object({
@@ -39,6 +38,7 @@ export const CreatePost: React.FC<CreatePostProps> = ({ posts, setPosts }) => {
   const {
     handleSubmit,
     register,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(createPostSchema),
@@ -75,6 +75,7 @@ export const CreatePost: React.FC<CreatePostProps> = ({ posts, setPosts }) => {
         onSubmit={handleSubmit((data) => {
           createPost({ name: data.name });
           console.log(data);
+          reset();
         })}
       >
         <FormControl isInvalid={Boolean(errors.name)}>
