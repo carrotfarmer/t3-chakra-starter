@@ -1,13 +1,6 @@
 import React from "react";
 
-import {
-  Box,
-  Flex,
-  Stack,
-  Button,
-  Heading,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Box, Flex, Stack, Button, Heading, useColorModeValue } from "@chakra-ui/react";
 
 import { signOut, signIn, useSession } from "next-auth/react";
 import { ColorModeSwitch } from "./ColorModeSwitch";
@@ -18,7 +11,9 @@ export const Navbar: React.FC = ({}) => {
   return (
     <Box>
       <Flex
+        // @eslint-ignore
         bg={useColorModeValue("white", "gray.800")}
+        // @eslint-ignore
         color={useColorModeValue("gray.600", "white")}
         minH={"60px"}
         py={{ base: 2 }}
