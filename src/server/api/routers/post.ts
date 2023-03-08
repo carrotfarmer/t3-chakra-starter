@@ -15,4 +15,13 @@ export const postRouter = createTRPCRouter({
       }
     });
   }),
+
+  getPosts: protectedProcedure
+  .query(async ({ ctx }) => {
+    return await ctx.prisma.post.findMany({
+      where: {
+        userId: ctx.session.user.id
+      }
+    })
+  })
 });
