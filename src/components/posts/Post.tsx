@@ -1,6 +1,7 @@
+import React from "react";
 import { Box, Button, HStack, Spacer, Text, useToast } from "@chakra-ui/react";
 import { Post as IPost } from "@prisma/client";
-import React from "react";
+
 import { api } from "../../utils/api";
 
 interface PostProps {

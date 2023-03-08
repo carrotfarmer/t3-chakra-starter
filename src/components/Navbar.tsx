@@ -1,6 +1,13 @@
 import React from "react";
 
-import { Box, Flex, Stack, Button, useColorModeValue, Heading } from "@chakra-ui/react";
+import { 
+  Box,
+  Flex,
+  Stack,
+  Button,
+  useColorModeValue,
+  Heading 
+} from "@chakra-ui/react";
 
 import { signOut, signIn, useSession } from "next-auth/react";
 

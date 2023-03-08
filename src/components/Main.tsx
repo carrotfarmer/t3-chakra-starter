@@ -2,9 +2,10 @@ import React from "react";
 import { useSession } from "next-auth/react";
 
 import { Text, Box, Center, Spinner } from "@chakra-ui/react";
+import { Post as IPost } from "@prisma/client";
+
 import { CreatePost } from "./posts/CreatePost";
 import { api } from "../utils/api";
-import { Post as IPost } from "@prisma/client";
 import { Post } from "./posts/Post";
 
 interface MainProps {}
