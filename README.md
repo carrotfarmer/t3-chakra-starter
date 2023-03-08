@@ -1,28 +1,54 @@
-# Create T3 App
+# t3-chakra-starter 
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+this is a [T3 Stack](https://create.t3.gg/) template mainly replacing tailwind with chakra ui.
+it has basic CRUD functionality and dark mode
 
-## What's next? How do I make an app with this?
+## libraries
+(included in create-t3-app)
+- NextAuth 
+- trpc
+- prisma
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+extras:
+- chakra-ui
+- react-hook-form
+- zod validation w/ hook form
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+# usage 
+### 1. Select <b>Create a new repository</b>.
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+![select repo img](https://docs.github.com/assets/cb-95207/mw-1000/images/help/repository/use-this-template-button.webp)
 
-## Learn More
+### 2. add dependencies
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+```sh
+cd <your-app-name>
+yarn
+```
+or using npm
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+```sh
+cd <your-app-name>
+npm i
+```
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+### 3. set up the database
 
-## How do I deploy this?
+This template uses `prisma/db.sqlite` as the default database. You can change the database URL in your `.env` file.
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+```sh
+npx prisma db push
+```
+
+### 4. run the app
+
+```sh
+yarn dev
+```
+
+or
+
+```
+npm run dev
+```
+
