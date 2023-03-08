@@ -40,7 +40,7 @@ export const Main: React.FC<MainProps> = ({}) => {
         <Box>
           {posts.map((post) => (
             <Box pt="5">
-              <Post post={post} />
+              <Post post={post} setPosts={setPosts} />
             </Box>
           ))}
         </Box>
