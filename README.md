@@ -34,7 +34,8 @@ npm i
 
 ### 3. set up the database
 
-This template uses `prisma/db.sqlite` as the default database. You can change the database URL in your `.env` file.
+This template uses [cockroachdb](https://cockroachlabs.cloud/) as the default database. You can change the database URL 
+in your `.env` file.
 
 ```sh
 npx prisma db push
